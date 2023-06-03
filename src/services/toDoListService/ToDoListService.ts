@@ -8,25 +8,30 @@ import {
   UPDATE_TO_DO_ERROR_MESSAGE,
 } from './toDoListConstants';
 import { ToDoListDataMapper } from './ToDoListDataMapper';
-import { DeleteToDoListResponse, GetToDoListResponse, ToDoList } from './toDoListModels';
+import {
+  DeleteToDoListResponse,
+  GetToDoListResponse,
+  ToDoListDomain,
+  ToDoListPersistence,
+} from './toDoListModels';
 
 class ToDoListService {
   constructor(private http: IHttpAdapter) {}
 
-  async getAllToDos(): Promise<ToDoList[]> {
+  async getAllToDos(): Promise<ToDoListDomain[]> {
     try {
-      const { data } = await this.http.get<GetToDoListResponse[]>(URLS.listToDos);
-      const domainData = data.map((toDo) => ToDoListDataMapper.toDomain(toDo));
+      const { data } = await this.http.get<GetToDoListResponse>(URLS.listToDos);
+      const domainData = data.todos.map((toDo) => ToDoListDataMapper.toDomain(toDo));
       return domainData;
     } catch {
       throw new Error(GET_TO_DO_ERROR_MESSAGE);
     }
   }
 
-  async createToDo(toDo: ToDoList): Promise<ToDoList> {
+  async createToDo(toDo: ToDoListDomain): Promise<ToDoListDomain> {
     try {
       const toPersistence = ToDoListDataMapper.toPersistence(toDo);
-      const { data } = await this.http.post<GetToDoListResponse>(
+      const { data } = await this.http.post<ToDoListPersistence>(
         URLS.listToDos,
         toPersistence,
       );
@@ -48,9 +53,9 @@ class ToDoListService {
     }
   }
 
-  async updateToDo(id: number, isCompleted: boolean): Promise<ToDoList> {
+  async updateToDo(id: number, isCompleted: boolean): Promise<ToDoListDomain> {
     try {
-      const { data } = await this.http.put<GetToDoListResponse>(
+      const { data } = await this.http.put<ToDoListPersistence>(
         `${URLS.updateToDo}/${id}`,
         {
           completed: isCompleted,

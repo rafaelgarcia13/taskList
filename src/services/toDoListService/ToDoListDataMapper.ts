@@ -1,7 +1,7 @@
-import { GetToDoListResponse, ToDoList } from './toDoListModels';
+import { ToDoListDomain, ToDoListPersistence } from './toDoListModels';
 
 class ToDoListDataMapper {
-  static toDomain(domainTrendingMovie: GetToDoListResponse): ToDoList {
+  static toDomain(domainTrendingMovie: ToDoListPersistence): ToDoListDomain {
     return {
       id: domainTrendingMovie.id,
       isCompleted: domainTrendingMovie.completed,
@@ -10,7 +10,7 @@ class ToDoListDataMapper {
     };
   }
 
-  static toPersistence(persistenceContact: ToDoList): GetToDoListResponse {
+  static toPersistence(persistenceContact: ToDoListDomain): ToDoListPersistence {
     return {
       id: persistenceContact.id,
       completed: persistenceContact.isCompleted,
