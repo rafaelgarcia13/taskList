@@ -1,11 +1,18 @@
-interface GetToDoListResponse {
+interface ToDoListPersistence {
   userId: number;
   id: number;
   todo: string;
   completed: false;
 }
 
-interface ToDoList {
+interface GetToDoListResponse {
+  limit: number;
+  skip: number;
+  total: number;
+  todos: ToDoListPersistence[];
+}
+
+interface ToDoListDomain {
   userId: number;
   id: number;
   title: string;
@@ -20,4 +27,9 @@ interface DeleteToDoListResponse {
   isDeleted: boolean;
 }
 
-export { DeleteToDoListResponse, GetToDoListResponse, ToDoList };
+export {
+  DeleteToDoListResponse,
+  GetToDoListResponse,
+  ToDoListDomain,
+  ToDoListPersistence,
+};
