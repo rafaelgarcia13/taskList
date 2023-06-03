@@ -13,19 +13,19 @@ abstract class AxiosClient implements IHttpAdapter {
     });
   }
 
-  async get<T = object, R = AxiosResponse<T>>(url: string, params: object): Promise<R> {
+  async get<T>(url: string, params: object): Promise<AxiosResponse<T>> {
     return this.http.get(url, { params });
   }
 
-  async post<T = object, R = AxiosResponse<T>>(url: string, body: object): Promise<R> {
+  async post<T>(url: string, body: object): Promise<AxiosResponse<T>> {
     return this.http.get(url, body);
   }
 
-  async delete<T = object, R = AxiosResponse<T>>(url: string, body: object): Promise<R> {
+  async delete<T>(url: string, body: object): Promise<AxiosResponse<T>> {
     return this.http.get(url, body);
   }
 
-  async put<T = object, R = AxiosResponse<T>>(url: string, body: object): Promise<R> {
+  async put<T>(url: string, body: object): Promise<AxiosResponse<T>> {
     return this.http.get(url, body);
   }
 }
