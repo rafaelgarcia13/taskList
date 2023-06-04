@@ -16,7 +16,7 @@ interface ToDoListDomain {
   userId: number;
   id: number;
   title: string;
-  isCompleted: false;
+  isCompleted: boolean;
 }
 
 interface DeleteToDoListResponse {
