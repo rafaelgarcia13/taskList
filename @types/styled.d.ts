@@ -14,6 +14,8 @@ declare module 'styled-components' {
       background: string;
       text: string;
       svgPrimary: string;
+      completed: string;
+      disabled: string;
     };
   }
 }
