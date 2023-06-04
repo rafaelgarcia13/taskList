@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 import { URLS } from '../../services/urls';
-import { IHttpAdapter } from './IHttpAdapter';
+import { IHttpRequests } from './IHttpRequests';
 
-abstract class AxiosClient implements IHttpAdapter {
+abstract class AxiosAdapter implements IHttpRequests {
   public http: AxiosInstance;
 
   constructor() {
@@ -30,4 +30,4 @@ abstract class AxiosClient implements IHttpAdapter {
   }
 }
 
-export { AxiosClient };
+export { AxiosAdapter };

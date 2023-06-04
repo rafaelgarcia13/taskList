@@ -1,6 +1,6 @@
-import { AxiosClient } from './AxiosClient';
+import { AxiosAdapter } from './AxiosAdapter';
 
-class HttpClient extends AxiosClient {
+class HttpClient extends AxiosAdapter {
   constructor() {
     super();
   }
