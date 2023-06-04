@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { FlatList } from 'react-native';
 
@@ -32,6 +32,10 @@ const ListTodos: React.FC = () => {
     });
     setToDos(newStatusToDos);
   };
+
+  useEffect(() => {
+    setToDos(data);
+  }, [data]);
 
   return (
     <Container>
