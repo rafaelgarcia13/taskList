@@ -12,7 +12,11 @@ abstract class AsyncStorageAdapter {
   }
 
   async setItem(key: string, value: string) {
-    await AsyncStorage.setItem(key, value);
+    try {
+      await AsyncStorage.setItem(key, value);
+    } catch {
+      return null;
+    }
   }
 }
 
