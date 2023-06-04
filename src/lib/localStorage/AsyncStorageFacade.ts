@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-abstract class AsyncStorageAdapter {
+class AsyncStorageFacade {
   async getItem<T>(key: string): Promise<T> {
     try {
       const data = await AsyncStorage.getItem(key);
@@ -11,13 +11,13 @@ abstract class AsyncStorageAdapter {
     }
   }
 
-  async setItem(key: string, value: string) {
+  async setItem<T>(key: string, value: T) {
     try {
-      await AsyncStorage.setItem(key, value);
+      await AsyncStorage.setItem(key, JSON.stringify(value));
     } catch {
       return null;
     }
   }
 }
 
-export { AsyncStorageAdapter };
+export default new AsyncStorageFacade();
