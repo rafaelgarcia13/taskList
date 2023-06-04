@@ -1,17 +1,23 @@
 import styled from 'styled-components/native';
 
 const Container = styled.View`
-  width: 100%;
   height: 50px;
   flex-direction: row;
   align-items: center;
-  background: blue;
+  justify-content: space-between;
+  background: ${(props) => props.theme.colors.primary};
   padding: 8px;
 `;
 
 const UserName = styled.Text`
   font-size: 16px;
+  color: ${(props) => props.theme.colors.text};
   margin-left: 6px;
 `;
 
-export { Container, UserName };
+const UserContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export { Container, UserName, UserContainer };
