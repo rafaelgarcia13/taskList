@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { fontFamily } from '../../assets/fonts';
 
 const Container = styled.View`
   height: 50px;
@@ -10,8 +11,9 @@ const Container = styled.View`
 `;
 
 const UserName = styled.Text`
-  font-size: 16px;
+  font-size: 18px;
   color: ${(props) => props.theme.colors.text};
+  font-family: ${fontFamily.bold}
   margin-left: 6px;
 `;
 

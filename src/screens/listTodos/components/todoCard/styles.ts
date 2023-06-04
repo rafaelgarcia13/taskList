@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { fontFamily } from '../../../../assets/fonts';
 
 const Container = styled.View`
   padding: 8px 20px;
@@ -15,6 +16,7 @@ const Title = styled.Text`
   font-size: 16px;
   color: black;
   margin-right: 8px;
+  font-family: ${fontFamily.medium};
 `;
 
 const IconsView = styled.View`
