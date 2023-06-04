@@ -53,7 +53,7 @@ class ToDoListService {
     }
   }
 
-  async updateToDo(id: number, isCompleted: boolean): Promise<ToDoListDomain> {
+  async updateToDo(id: number, isCompleted: boolean): Promise<boolean> {
     try {
       const { data } = await this.http.put<ToDoListPersistence>(
         `${URLS.updateToDo}/${id}`,
@@ -62,7 +62,7 @@ class ToDoListService {
         },
       );
       const domainData = ToDoListDataMapper.toDomain(data);
-      return domainData;
+      return domainData.isCompleted;
     } catch {
       throw new Error(UPDATE_TO_DO_ERROR_MESSAGE);
     }
