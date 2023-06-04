@@ -26,5 +26,4 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "files": ["src/@types/styled.d.ts"]
 }
