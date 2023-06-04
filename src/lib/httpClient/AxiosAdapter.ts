@@ -18,15 +18,15 @@ abstract class AxiosAdapter implements IHttpRequests {
   }
 
   async post<T>(url: string, body: object): Promise<AxiosResponse<T>> {
-    return this.http.get(url, body);
+    return this.http.post(url, body);
   }
 
   async delete<T>(url: string, body: object): Promise<AxiosResponse<T>> {
-    return this.http.get(url, body);
+    return this.http.delete(url, body);
   }
 
   async put<T>(url: string, body: object): Promise<AxiosResponse<T>> {
-    return this.http.get(url, body);
+    return this.http.put(url, body);
   }
 }
 
