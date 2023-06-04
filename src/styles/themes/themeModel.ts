@@ -14,6 +14,10 @@ type IThemeModel = {
     error: string;
     background: string;
     text: string;
+    svgPrimary: string;
+    reverseColor: string;
+    disabled: string;
+    completed: string;
   };
 };
 

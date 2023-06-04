@@ -11,6 +11,10 @@ const darkTheme: IThemeModel = {
     error: '#ff0000',
     background: '#000000',
     text: '#FFFFFF',
+    svgPrimary: '#FFFFFF',
+    reverseColor: '#AE1A5B',
+    disabled: '#BDBDBD',
+    completed: '#0900FF',
   },
 };
 
