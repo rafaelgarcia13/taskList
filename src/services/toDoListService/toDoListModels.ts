@@ -27,7 +27,7 @@ interface DeleteToDoListResponse {
   isDeleted: boolean;
 }
 
-export {
+export type {
   DeleteToDoListResponse,
   GetToDoListResponse,
   ToDoListDomain,
