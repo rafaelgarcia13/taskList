@@ -1,5 +1,5 @@
 import { HttpClient } from '../../lib/httpClient/HttpClient';
-import { IHttpAdapter } from '../../lib/httpClient/IHttpAdapter';
+import { IHttpRequests } from '../../lib/httpClient/IHttpRequests';
 import { URLS } from '../urls';
 import {
   CREATE_TO_DO_ERROR_MESSAGE,
@@ -16,7 +16,7 @@ import {
 } from './toDoListModels';
 
 class ToDoListService {
-  constructor(private http: IHttpAdapter) {}
+  constructor(private http: IHttpRequests) {}
 
   async getAllToDos(): Promise<ToDoListDomain[]> {
     try {
