@@ -12,12 +12,12 @@ export const Container = styled.TouchableOpacity<ISwitchButtonStyleProps>`
   border-radius: 12px;
   justify-content: center;
   position: relative;
-  background: white;
+  background-color: white;
 `;
 
 export const Circle = styled(Animated.View)<ISwitchButtonStyleProps>`
   width: 24px;
   height: 24px;
   border-radius: 12px;
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.reverseColor};
 `;

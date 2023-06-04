@@ -10,8 +10,8 @@ interface IStatusBarProps {
 const StatusBarStyled: React.FC<IStatusBarProps> = ({ theme }) => {
   return (
     <StatusBar
-      barStyle={theme.id === ThemesIds.dark ? 'light-content' : 'dark-content'}
-      backgroundColor={theme.colors.background}
+      barStyle={theme?.id === ThemesIds.dark ? 'light-content' : 'dark-content'}
+      backgroundColor={theme?.colors?.background}
     />
   );
 };
