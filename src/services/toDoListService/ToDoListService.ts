@@ -32,7 +32,7 @@ class ToDoListService {
     try {
       const toPersistence = ToDoListDataMapper.toPersistence(toDo);
       const { data } = await this.http.post<ToDoListPersistence>(
-        URLS.listToDos,
+        URLS.addToDo,
         toPersistence,
       );
       const domainData = ToDoListDataMapper.toDomain(data);
