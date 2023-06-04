@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import { Text, Button } from 'react-native';
-import { useUserStore } from '../../store/userStore';
+import { Button } from 'react-native';
+import AsyncStorageFacade from '../../lib/localStorage/AsyncStorageFacade';
+import { userInfoKey } from '../../lib/localStorage/localStorageKeys';
+import { useStore } from '../../store/useStore';
 import { Container, TextInput } from './styles';
 
 const Login: React.FC = () => {
-  const saveUserName = useUserStore(({ saveUserName }) => saveUserName);
+  const saveUserName = useStore(({ saveUserName }) => saveUserName);
 
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    await AsyncStorageFacade.setItem<string>(userInfoKey, userName);
     saveUserName(userName);
   };
 
   return (
     <Container>
-      <Text>Pagina de Login</Text>
       <TextInput
         placeholder="Digite o nome de usuário"
         value={userName}
