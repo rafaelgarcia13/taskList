@@ -10,9 +10,10 @@ import ToDoListService from '../../services/toDoListService/ToDoListService';
 import { ToDoListDomain } from '../../services/toDoListService/toDoListModels';
 import { Divider, ListContainer, Container } from './styles';
 import { SpinnerLoading } from '../../components/spinnerLoading/SpinnerLoading';
+import { CreateTodo } from './components/createTodo/CreateTodo';
 
 const ListTodos: React.FC = () => {
-  const { data, isLoading } = useQuery(URLS.listToDos, () =>
+  const { data, isLoading } = useQuery<ToDoListDomain[]>(URLS.listToDos, () =>
     ToDoListService.getAllToDos(),
   );
 
@@ -33,6 +34,10 @@ const ListTodos: React.FC = () => {
     setToDos(newStatusToDos);
   };
 
+  const saveNewTodo = (toDo: ToDoListDomain) => {
+    setToDos((previousToDos) => [toDo, ...(previousToDos || [])]);
+  };
+
   useEffect(() => {
     setToDos(data);
   }, [data]);
@@ -40,8 +45,10 @@ const ListTodos: React.FC = () => {
   return (
     <Container>
       <Header />
+      <CreateTodo saveNewTodo={saveNewTodo} />
       <ListContainer>
         <FlatList
+          contentContainerStyle={{ paddingTop: 12, paddingBottom: 12 }}
           data={todDos}
           renderItem={({ item }) => (
             <TodoCard
