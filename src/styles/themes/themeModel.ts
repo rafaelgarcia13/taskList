@@ -10,7 +10,6 @@ type IThemeModel = {
     primary: string;
     secondary: string;
     tertiary: string;
-    success: string;
     error: string;
     background: string;
     text: string;
