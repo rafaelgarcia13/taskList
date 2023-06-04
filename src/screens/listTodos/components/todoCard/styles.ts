@@ -2,13 +2,13 @@ import styled from 'styled-components/native';
 
 const Container = styled.View`
   padding: 8px 20px;
-  elevation: 1;
   border-radius: 40px;
   border: 1px solid;
   background-color: white;
   height: 100px;
   flex-direction: row;
   align-items: center;
+  background-color: ${(props) => props.theme.colors.tertiary};
 `;
 
 const Title = styled.Text`

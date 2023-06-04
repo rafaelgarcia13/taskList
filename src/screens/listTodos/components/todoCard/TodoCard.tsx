@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { useTheme } from 'styled-components';
 import { CheckCircle } from '../../../../assets/images/svg/CheckCircle';
 import { Trash } from '../../../../assets/images/svg/Trash';
 
@@ -11,7 +12,8 @@ interface ITodoCardProps {
 }
 
 const TodoCard: React.FC<ITodoCardProps> = ({ title, isCompleted }) => {
-  console.log(isCompleted);
+  const theme = useTheme();
+
   return (
     <Container>
       <TitleView>
@@ -19,7 +21,11 @@ const TodoCard: React.FC<ITodoCardProps> = ({ title, isCompleted }) => {
       </TitleView>
       <IconsView>
         <TouchableOpacity>
-          <CheckCircle width={35} height={35} />
+          <CheckCircle
+            width={35}
+            height={35}
+            fill={isCompleted ? theme.colors.completed : theme.colors.disabled}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <Trash width={35} height={35} />
