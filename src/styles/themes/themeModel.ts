@@ -17,6 +17,7 @@ type IThemeModel = {
     reverseColor: string;
     disabled: string;
     completed: string;
+    black: string;
   };
 };
 

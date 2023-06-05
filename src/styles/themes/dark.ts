@@ -14,6 +14,7 @@ const darkTheme: IThemeModel = {
     reverseColor: '#00AFFF',
     disabled: '#BDBDBD',
     completed: '#0900FF',
+    black: '#000000',
   },
 };
 

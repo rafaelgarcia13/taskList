@@ -15,6 +15,7 @@ declare module 'styled-components' {
       svgPrimary: string;
       completed: string;
       disabled: string;
+      black: string;
     };
   }
 }

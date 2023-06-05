@@ -14,6 +14,7 @@ const lightTheme: IThemeModel = {
     reverseColor: '#37474F',
     disabled: '#BDBDBD',
     completed: '#00790A',
+    black: '#000000',
   },
 };
 
