@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { Button } from 'react-native';
+import { SpinnerLoading } from '../../components/spinnerLoading/SpinnerLoading';
 import AsyncStorageFacade from '../../lib/localStorage/AsyncStorageFacade';
 import { userInfoKey } from '../../lib/localStorage/localStorageKeys';
 import { useStore } from '../../store/useStore';
-import { Container, TextInput } from './styles';
+import { Container, TextInput, Button, ButtonText } from './styles';
 
 const Login: React.FC = () => {
   const saveUserName = useStore(({ saveUserName }) => saveUserName);
 
   const [userName, setUserName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [userPassword, setUserPassword] = useState('');
 
+  const isDisabledButton = !userName || !userPassword;
+
   const handleLogin = async () => {
+    setIsLoading(true);
     await AsyncStorageFacade.setItem<string>(userInfoKey, userName);
     saveUserName(userName);
+    setIsLoading(false);
   };
 
   return (
@@ -30,10 +35,12 @@ const Login: React.FC = () => {
         secureTextEntry
       />
       <Button
-        title="Conectar"
-        disabled={!userName || !userPassword}
+        isDisabledButton={isDisabledButton}
+        disabled={isDisabledButton}
         onPress={handleLogin}
-      />
+      >
+        {isLoading ? <SpinnerLoading /> : <ButtonText>CONECTAR</ButtonText>}
+      </Button>
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { fontFamily } from '../../assets/fonts';
 
 const Container = styled.View`
   flex: 1;
@@ -15,4 +16,24 @@ const TextInput = styled.TextInput`
   padding: 10px;
 `;
 
-export { Container, TextInput };
+interface IButtonProps {
+  isDisabledButton: boolean;
+}
+
+const Button = styled.TouchableOpacity<IButtonProps>`
+  background-color: ${(props) =>
+    props.isDisabledButton ? props.theme.colors.disabled : props.theme.colors.black};
+  height: 50px;
+  width: 50%;
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ButtonText = styled.Text`
+  font-size: 22px;
+  color: white;
+  font-family: ${fontFamily.medium};
+`;
+
+export { Container, TextInput, Button, ButtonText };
