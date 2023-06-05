@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { PlusCircle } from '../../../../assets/images/svg/PlusCircle';
 import { SpinnerLoading } from '../../../../components/spinnerLoading/SpinnerLoading';
+import { GENERIC_ERROR_MESSAGE } from '../../../../services/constants';
 import { ToDoListDomain } from '../../../../services/toDoListService/toDoListModels';
 import ToDoListService from '../../../../services/toDoListService/ToDoListService';
+import { useStore } from '../../../../store/useStore';
 import { Container, TextInput, TextInputWrapper, TouchableOpacity } from './styles';
 
 interface ICreateTodoProps {
@@ -11,6 +13,8 @@ interface ICreateTodoProps {
 }
 
 const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
+  const setFeedback = useStore(({ setFeedback }) => setFeedback);
+
   const theme = useTheme();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +33,10 @@ const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
       const returnedTodo = await ToDoListService.createToDo(newTodo);
       saveNewTodo(returnedTodo);
       setText('');
-    } catch {
-      console.log('deu erro, subir toast');
+    } catch (e) {
+      let message = GENERIC_ERROR_MESSAGE;
+      if (e instanceof Error) message = e.message;
+      setFeedback({ isError: true, message, isOpen: true });
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +52,6 @@ const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
           onChangeText={setText}
           multiline
           onContentSizeChange={(e) => seInputHeight(e.nativeEvent.contentSize.height)}
-          onKeyPress={handleCreateNewToDo}
         />
       </TextInputWrapper>
 

@@ -4,7 +4,9 @@ import { useTheme } from 'styled-components';
 import { CheckCircle } from '../../../../assets/images/svg/CheckCircle';
 import { Trash } from '../../../../assets/images/svg/Trash';
 import { SpinnerLoading } from '../../../../components/spinnerLoading/SpinnerLoading';
+import { GENERIC_ERROR_MESSAGE } from '../../../../services/constants';
 import ToDoListService from '../../../../services/toDoListService/ToDoListService';
+import { useStore } from '../../../../store/useStore';
 
 import { Container, Title, IconsView, TitleView } from './styles';
 
@@ -24,7 +26,7 @@ const TodoCard: React.FC<ITodoCardProps> = ({
   updateToDosStatus,
 }) => {
   const theme = useTheme();
-
+  const setFeedback = useStore(({ setFeedback }) => setFeedback);
   const [isLoadingDeletion, setIsLoadingDeletion] = useState(false);
   const [isChangeCompletedStatus, setIsChangeCompletedStatus] = useState(false);
 
@@ -33,8 +35,10 @@ const TodoCard: React.FC<ITodoCardProps> = ({
       setIsLoadingDeletion(true);
       const isDeleted = await ToDoListService.deleteToDo(id);
       if (isDeleted) filterToDos(id);
-    } catch {
-      console.log('deu erro, subir toast');
+    } catch (e) {
+      let message = GENERIC_ERROR_MESSAGE;
+      if (e instanceof Error) message = e.message;
+      setFeedback({ isError: true, message, isOpen: true });
     } finally {
       setIsLoadingDeletion(false);
     }
@@ -45,8 +49,10 @@ const TodoCard: React.FC<ITodoCardProps> = ({
       setIsChangeCompletedStatus(true);
       const newIsCompleted = await ToDoListService.updateToDo(id, !isCompleted);
       updateToDosStatus(id, newIsCompleted);
-    } catch {
-      console.log('deu erro, subir toast');
+    } catch (e) {
+      let message = GENERIC_ERROR_MESSAGE;
+      if (e instanceof Error) message = e.message;
+      setFeedback({ isError: true, message, isOpen: true });
     } finally {
       setIsChangeCompletedStatus(false);
     }
