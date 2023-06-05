@@ -37,13 +37,13 @@ const Header: React.FC = () => {
   return (
     <Container>
       <UserContainer>
-        <Profile fill={theme.colors.svgPrimary} width={38} height={38} />
+        <Profile fill={theme.colors.svgPrimary} width={32} height={32} />
         <UserName numberOfLines={1}>{userName}</UserName>
       </UserContainer>
       <IconsWrapper>
         <SwitchButton isChecked={theme.id === ThemesIds.dark} onPress={toggleTheme} />
         <TouchableOpacity onPress={handleLogout}>
-          <Logout width={28} height={28} fill={theme.colors.svgPrimary} />
+          <Logout width={32} height={32} fill={theme.colors.svgPrimary} />
           <LogoutText>Sair</LogoutText>
         </TouchableOpacity>
       </IconsWrapper>
