@@ -10,6 +10,7 @@ declare module 'styled-components' {
       secondary: string;
       tertiary: string;
       error: string;
+      success: string;
       background: string;
       text: string;
       svgPrimary: string;

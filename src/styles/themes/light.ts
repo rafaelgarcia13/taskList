@@ -8,6 +8,7 @@ const lightTheme: IThemeModel = {
     secondary: '#42E3FF',
     tertiary: '#FFFFFF',
     error: '#ff0000',
+    success: '#4BB543',
     background: '#CFD8DC',
     text: '#000000',
     svgPrimary: '#000000',

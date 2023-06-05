@@ -8,6 +8,7 @@ const darkTheme: IThemeModel = {
     secondary: '#607D88',
     tertiary: '#CFD8DC',
     error: '#ff0000',
+    success: '#4BB543',
     background: '#000000',
     text: '#FFFFFF',
     svgPrimary: '#FFFFFF',

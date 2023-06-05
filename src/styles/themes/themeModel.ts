@@ -11,6 +11,7 @@ type IThemeModel = {
     secondary: string;
     tertiary: string;
     error: string;
+    success: string;
     background: string;
     text: string;
     svgPrimary: string;
