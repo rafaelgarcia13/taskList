@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import { fontFamily } from '../../assets/fonts';
 
 const Container = styled.View`
-  height: 50px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -11,10 +10,11 @@ const Container = styled.View`
 `;
 
 const UserName = styled.Text`
-  font-size: 18px;
+  font-size: 22px;
   color: ${(props) => props.theme.colors.text};
   font-family: ${fontFamily.bold}
   margin-left: 6px;
+  max-width: 83%;
 `;
 
 const UserContainer = styled.View`
@@ -22,4 +22,21 @@ const UserContainer = styled.View`
   align-items: center;
 `;
 
-export { Container, UserName, UserContainer };
+const IconsWrapper = styled.View`
+  align-items: flex-end;
+`;
+
+const TouchableOpacity = styled.TouchableOpacity`
+  margin-top: 12px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const LogoutText = styled.Text`
+  font-size: 18px;
+  color: ${(props) => props.theme.colors.text};
+  font-family: ${fontFamily.bold}
+  margin-left: 6px;
+`;
+
+export { Container, UserName, UserContainer, IconsWrapper, TouchableOpacity, LogoutText };
