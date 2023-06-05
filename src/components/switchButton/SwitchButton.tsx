@@ -13,7 +13,7 @@ const SwitchButton: React.FC<ISwitchButtonProps> = ({ isChecked, onPress }) => {
 
   useEffect(() => {
     Animated.timing(translateX, {
-      toValue: isChecked ? 25 : -4,
+      toValue: isChecked ? 50 : 0,
       duration: 200,
       useNativeDriver: true,
     }).start();

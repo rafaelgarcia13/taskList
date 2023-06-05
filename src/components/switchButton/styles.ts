@@ -7,7 +7,7 @@ interface ISwitchButtonStyleProps {
 
 export const Container = styled.TouchableOpacity<ISwitchButtonStyleProps>`
   height: 24px;
-  width: 45px;
+  width: 70px;
   border: 1px solid grey;
   border-radius: 12px;
   justify-content: center;
