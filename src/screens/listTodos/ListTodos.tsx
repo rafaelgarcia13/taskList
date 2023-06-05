@@ -11,13 +11,20 @@ import { ToDoListDomain } from '../../services/toDoListService/toDoListModels';
 import { Divider, ListContainer, Container } from './styles';
 import { SpinnerLoading } from '../../components/spinnerLoading/SpinnerLoading';
 import { CreateTodo } from './components/createTodo/CreateTodo';
+import { EmptyScreen } from '../../components/emptyScreen/EmptyScreen';
 
 const ListTodos: React.FC = () => {
-  const { data, isLoading } = useQuery<ToDoListDomain[]>(URLS.listToDos, () =>
+  const { data, isLoading, isError } = useQuery<ToDoListDomain[]>(URLS.listToDos, () =>
     ToDoListService.getAllToDos(),
   );
 
   const [todDos, setToDos] = useState(data);
+
+  const emptyMessage = isError
+    ? 'Não foi possível buscar a lista de tarefas, tenta novamente mais tarde'
+    : 'Não foi encontrada nenhuma tarefa';
+
+  const emptyData = !todDos?.length;
 
   const filterToDos = async (id: number) => {
     const filteredToDos = todDos?.filter((toDo) => toDo.id !== id);
@@ -47,6 +54,7 @@ const ListTodos: React.FC = () => {
       <Header />
       <CreateTodo saveNewTodo={saveNewTodo} />
       <ListContainer>
+        {!isLoading && (isError || emptyData) && <EmptyScreen message={emptyMessage} />}
         <FlatList
           contentContainerStyle={{ paddingTop: 12, paddingBottom: 12 }}
           data={todDos}
