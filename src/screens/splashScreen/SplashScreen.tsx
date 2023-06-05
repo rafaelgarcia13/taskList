@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ToDoList } from '../../assets/images/svg/ToDoList';
+import { Background, Title, Wrapper } from './styles';
 
 const SplashScreen: React.FC = () => {
   return (
-    <View>
-      <Text>Carregando</Text>
-    </View>
+    <Background>
+      <Wrapper>
+        <ToDoList />
+        <Title>App Lista de Tarefas</Title>
+      </Wrapper>
+    </Background>
   );
 };
 
