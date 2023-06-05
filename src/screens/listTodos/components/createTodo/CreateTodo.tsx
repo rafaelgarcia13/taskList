@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { TextInput } from 'react-native';
 import { useTheme } from 'styled-components';
 import { PlusCircle } from '../../../../assets/images/svg/PlusCircle';
 import { SpinnerLoading } from '../../../../components/spinnerLoading/SpinnerLoading';
@@ -6,7 +7,7 @@ import { GENERIC_ERROR_MESSAGE } from '../../../../services/constants';
 import { ToDoListDomain } from '../../../../services/toDoListService/toDoListModels';
 import ToDoListService from '../../../../services/toDoListService/ToDoListService';
 import { useStore } from '../../../../store/useStore';
-import { Container, TextInput, TextInputWrapper, TouchableOpacity } from './styles';
+import { Container, TextInputWrapper, TouchableOpacity } from './styles';
 
 interface ICreateTodoProps {
   saveNewTodo: (toDo: ToDoListDomain) => void;
@@ -19,6 +20,7 @@ const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [inputHeight, seInputHeight] = useState(0);
+  const inputRef = useRef<TextInput>(null);
   const [text, setText] = useState('');
 
   const handleCreateNewToDo = async () => {
@@ -39,6 +41,7 @@ const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
       setFeedback({ isError: true, message, isOpen: true });
     } finally {
       setIsLoading(false);
+      inputRef?.current?.blur();
     }
   };
 
@@ -46,6 +49,7 @@ const CreateTodo: React.FC<ICreateTodoProps> = ({ saveNewTodo }) => {
     <Container>
       <TextInputWrapper>
         <TextInput
+          ref={inputRef}
           style={{ height: inputHeight }}
           placeholder="Digite uma nova tarefa"
           value={text}

@@ -14,12 +14,10 @@ const TextInputWrapper = styled.View`
   border-color: grey;
 `;
 
-const TextInput = styled.TextInput``;
-
 const TouchableOpacity = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   padding: 6px;
 `;
 
-export { Container, TextInput, TouchableOpacity, TextInputWrapper };
+export { Container, TouchableOpacity, TextInputWrapper };
