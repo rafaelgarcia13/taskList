@@ -2,6 +2,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { ThemeProvider } from 'styled-components/native';
+import { FeedbackCard } from './components/feedbackCard/FeedbackCard';
 import { StatusBarStyled } from './components/statusBar/StatusBar';
 import { NavigatorContainer } from './routes/NavigatorContainer';
 import { useStore } from './store/useStore';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
           <StatusBarStyled theme={theme} />
           <NavigatorContainer />
+          <FeedbackCard />
         </ThemeProvider>
       </QueryClientProvider>
     </SafeAreaView>
