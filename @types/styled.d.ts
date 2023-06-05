@@ -16,6 +16,7 @@ declare module 'styled-components' {
       completed: string;
       disabled: string;
       black: string;
+      reverseColor: string;
     };
   }
 }
