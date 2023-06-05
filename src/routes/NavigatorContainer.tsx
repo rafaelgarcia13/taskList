@@ -21,7 +21,7 @@ const NavigatorContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    getUserInfo();
+    setTimeout(() => getUserInfo(), 3000);
   }, []);
 
   return isLoading ? <SplashScreen /> : <AuthNavigator />;
