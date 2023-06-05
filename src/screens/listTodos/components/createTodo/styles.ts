@@ -4,20 +4,22 @@ const Container = styled.View`
   flex-direction: row;
   background-color: white;
   align-items: center;
+  justify-content: space-between;
   border: 3px solid black;
 `;
 
-const TextInput = styled.TextInput`
-  width: 80%;
-  background-color: white;
+const TextInputWrapper = styled.View`
+  flex: 1;
   border-right-width: 1px;
   border-color: grey;
 `;
 
+const TextInput = styled.TextInput``;
+
 const TouchableOpacity = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
-  flex: 1;
+  padding: 6px;
 `;
 
-export { Container, TextInput, TouchableOpacity };
+export { Container, TextInput, TouchableOpacity, TextInputWrapper };
